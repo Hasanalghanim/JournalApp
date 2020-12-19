@@ -1,8 +1,8 @@
-
+{% extends "main/base.html" %} {% block content %}
 
 {{ error }}
 <!-- auth Form -->
-<form method="POST">
+    <form method="POST">
                {% csrf_token %}
                <div class="form-group">
                    <label for="username">Username</label>
@@ -19,3 +19,4 @@
                </div>
                <button type="submit" class="btn btn-primary">Sign Up</button>
            </form>
+{% endblock %}

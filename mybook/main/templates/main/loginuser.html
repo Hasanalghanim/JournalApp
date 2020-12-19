@@ -1,3 +1,5 @@
+{% extends "main/base.html" %} {% block content %}
+
 <div class="row justify-content-center mt-5">
     <div class="col-md-5">
         {% if error %}
@@ -5,7 +7,7 @@
                 {{ error }}
             </div>
         {% endif %}
-        <form method="POST">
+        <form method="POST" action="{% url 'loginuser' %}">
           {% csrf_token %}
             <div class="form-group">
                 <label for="username">Username</label>
@@ -15,7 +17,8 @@
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control" id="password">
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary"> Login</button>
+
         </form>
         <hr>
         <div class="text-center">
@@ -23,3 +26,5 @@
         </div>
     </div>
 </div>
+
+{% endblock %}

@@ -1,19 +1,24 @@
+{% extends "main/base.html" %} {% block content %}
+
+
+
 <h4>youre offically loggged in </h4>
 
 
 {% for Entry in entries %}
 <h2>{{ Entry.Title }}</h2>
-<h2>{{ Entry.Journal }}</h2>
-<h5>{{ Entry.Date}}</h5>
+
 <a href="{% url 'viewentry' Entry.id %}">Click here</a>
 {% endfor %}
 
 {% if user.is_authenticated %}
-<h2> {{ user.username }} </h2>
+<h2 class="text-muted"> {{ user.username }} </h2>
 <p><a href="{% url 'makeentry' %}">Make Entry</a></p>
 
-  <p><a href="{% url 'logoutuser' %}">Log Out</a></p>
+
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'loginuser' %}">Log In</a>
 {% endif %}
+
+{% endblock %}

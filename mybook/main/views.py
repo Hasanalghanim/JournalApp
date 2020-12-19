@@ -1,0 +1,83 @@
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
+from .models import Entry
+from .forms import EntryForm
+
+
+def home (request):
+    return render(request, 'main/home.html')
+
+
+def signupuser(request):
+    if request.method =="GET":
+        return render(request, 'main/signupuser.html', {'form': UserCreationForm()})
+    else:
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                user.save()
+                login(request, user)
+                return redirect('mainlogin')
+            except IntegrityError:
+                return render(request, 'main/signupuser.html', {'form': UserCreationForm(), 'error': 'This username has already been taken. Please select a new username.'})
+        else:
+            return render(request, 'main/loginuser.html', {'form': UserCreationForm(), 'error': 'Passwords did not match'})
+
+def loginuser(request):
+    if request.method == 'GET':
+        return render(request, 'main/loginuser.html', {'form': AuthenticationForm()})
+    else:
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password,)
+
+        if user is None:
+            return render(request, 'main/loginuser.html', {'form': AuthenticationForm(), 'error': 'Username and password did not match. '})
+        else:
+            login(request, user)
+            return redirect("mainlogin")
+
+
+def logoutuser(request):
+    if request.method == 'POST':
+        logout(request)
+    return render(request, 'main/home.html', {'logout': "youve logged out now"})
+
+
+
+def mainlogin(request):
+    entries = Entry.objects.filter(user=request.user)
+    return render(request, 'main/mainlogin.html', {"entries": entries })
+
+
+def makeentry(request):
+    if request.method == 'GET':
+        return render(request, 'main/makeentry.html', {'form': EntryForm()})
+    else:
+        try:
+            form = EntryForm(request.POST)
+            newentry = form.save(commit=False)
+            newentry.user = request.user
+            newentry.save()
+            return redirect('mainlogin')
+        except ValueError:
+            return render(request, 'main/makeentry.html', {'form': EntryForm(), 'error': 'check the fields'})
+
+
+
+def viewentry(request, Entry_pk):
+    entry = get_object_or_404(Entry, pk=Entry_pk, user=request.user)
+    if request.method =="GET":
+        form = EntryForm(instance=entry)
+        return render(request, 'main/viewentry.html', {'entry': Entry, 'form':form})
+    else:
+        try:
+            form = EntryForm(request.POST, instance=entry)
+            form.save()
+            return redirect('mainlogin')
+        except ValueError:
+            return render(request, 'main/viewentry', {'entry': entry, 'form': form, 'error': 'bad information'})

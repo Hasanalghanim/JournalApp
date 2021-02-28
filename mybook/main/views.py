@@ -72,13 +72,32 @@ def makeentry(request):
 @login_required
 def viewentry(request, Entry_pk):
     entry = get_object_or_404(Entry, pk=Entry_pk, user=request.user)
+    entrypk = Entry_pk
+    return render(request, 'main/viewentry.html', {'entry': entry, "entrypk":entrypk})
+
+
+
+
+
+@login_required
+def editentry(request, Entry_pk):
+    entry = get_object_or_404(Entry, pk=Entry_pk, user=request.user)
     if request.method =="GET":
         form = EntryForm(instance=entry)
-        return render(request, 'main/viewentry.html', {'entry': Entry, 'form':form})
+        return render(request, 'main/editentry.html', {'entry' : entry, 'form' : form})
     else:
         try:
             form = EntryForm(request.POST, instance=entry)
             form.save()
             return redirect('mainlogin')
         except ValueError:
-            return render(request, 'main/viewentry', {'entry': entry, 'form': form, 'error': 'bad information'})
+            return render(request, 'main/editentry.html', {'entry': entry, 'form': form, 'error': 'bad information'})
+
+
+
+@login_required
+def deleteentry(request, Entry_pk):
+    entry = get_object_or_404(Entry, pk=Entry_pk, user=request.user)
+    if request.method == "POST":
+        entry.delete()
+        return redirect('mainlogin')

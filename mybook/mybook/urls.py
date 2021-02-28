@@ -34,5 +34,7 @@ urlpatterns = [
 
     path('makeentry/', views.makeentry, name='makeentry'),
     path('main/<int:Entry_pk>', views.viewentry, name='viewentry'),
+    path('main/<int:Entry_pk>/edit', views.editentry, name='editentry'),
+    path('main/<int:Entry_pk>/delete', views.deleteentry, name='deleteentry'),
 
 ]

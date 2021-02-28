@@ -1,19 +1,27 @@
 {% extends "main/base.html" %} {% block content %}
 
 
+<div class="">
+  <h4> Welcome, {{ user.username }}.</h4>
+  <h5>Would you like to make an entry ? </h5>
+  <p><a href="{% url 'makeentry' %}">Make Entry </a></p>
+</div>
 
-<h4>youre offically loggged in </h4>
 
 
 {% for Entry in entries %}
-<h2>{{ Entry.Title }}</h2>
-
-<a href="{% url 'viewentry' Entry.id %}">Click here</a>
+<div class="card">
+  <h4 class="card-header text-capitalize">{{ Entry.Title }}</h4>
+  <div class="card-body">
+    <h5 class="card-text">{{ Entry.Journal|truncatewords:50 }}</h5>
+    <a href="{% url 'viewentry' Entry.id %}">Read {{ Entry.Title }}</a>
+  </div>
+</div>
 {% endfor %}
 
 {% if user.is_authenticated %}
-<h2 class="text-muted"> {{ user.username }} </h2>
-<p><a href="{% url 'makeentry' %}">Make Entry</a></p>
+
+
 
 
 {% else %}

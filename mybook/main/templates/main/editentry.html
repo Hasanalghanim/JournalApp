@@ -1,0 +1,35 @@
+{% extends "main/base.html" %} {% block content %}
+
+
+
+
+
+
+
+
+
+
+<form method="POST">
+  {% csrf_token %}
+
+  <div class="form-group">
+    <label for="Title">Title</label>
+    <input type="text" name="Title" class="form-control" id="Title" value='{{ entry.Title }}' required>
+  </div>
+  <div class="form-group">
+    <label for="Journal">Journal</label>
+    <textarea name="Journal" rows="5" class="form-control" id="Journal" > {{ entry.Journal }} </textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+  <button type="button" class="btn btn-danger" onclick="$('#delete').click()">Delete</button>
+
+</form>
+
+
+<form style='display: none;' method="POST" action="{% url 'deleteentry' entry.id %}">
+    {% csrf_token %}
+    <button id="delete" type="submit">Delete</button>
+</form>
+
+
+{% endblock %}

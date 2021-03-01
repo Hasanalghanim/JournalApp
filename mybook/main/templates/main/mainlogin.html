@@ -13,7 +13,7 @@
 <div class="card">
   <h4 class="card-header text-capitalize">{{ Entry.Title }}</h4>
   <div class="card-body">
-    <h5 class="card-text">{{ Entry.Journal|truncatewords:50 }}</h5>
+    <h5 class="card-text">{{ Entry.Journal| safe | truncatewords:50 }}</h5>
     <a href="{% url 'viewentry' Entry.id %}">Read {{ Entry.Title }}</a>
   </div>
 </div>

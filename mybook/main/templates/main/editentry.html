@@ -1,25 +1,22 @@
-{% extends "main/base.html" %} {% block content %}
+{% extends "main/base.html" %}
+
+
+
+{% block content %}
+
+
+{% load static %}
+{% load crispy_forms_tags %}
 
 
 
 
 
-
-
-
-
-
-<form method="POST">
-  {% csrf_token %}
-
-  <div class="form-group">
-    <label for="Title">Title</label>
-    <input type="text" name="Title" class="form-control" id="Title" value='{{ entry.Title }}' required>
-  </div>
-  <div class="form-group">
-    <label for="Journal">Journal</label>
-    <textarea name="Journal" rows="5" class="form-control" id="Journal" > {{ entry.Journal }} </textarea>
-  </div>
+  <form method="POST">
+    {% csrf_token %}
+    {{form.Title |as_crispy_field}}
+    {{form.Journal |as_crispy_field}}
+    {{form.media}}
   <button type="submit" class="btn btn-primary">Update</button>
   <button type="button" class="btn btn-danger" onclick="$('#delete').click()">Delete</button>
 
@@ -30,6 +27,8 @@
     {% csrf_token %}
     <button id="delete" type="submit">Delete</button>
 </form>
+
+
 
 
 {% endblock %}

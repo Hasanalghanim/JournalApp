@@ -9,7 +9,10 @@ from .forms import EntryForm
 
 
 def home (request):
-    return render(request, 'main/home.html')
+    if request.user.is_authenticated:
+        return redirect("mainlogin")
+    else:
+        return render(request, 'main/home.html')
 
 
 def signupuser(request):
@@ -70,21 +73,23 @@ def makeentry(request):
 
 
 @login_required
-def viewentry(request, Entry_pk):
-    entry = get_object_or_404(Entry, pk=Entry_pk, user=request.user)
-    entrypk = Entry_pk
-    return render(request, 'main/viewentry.html', {'entry': entry, "entrypk":entrypk})
+def viewentry(request, slug):
+    entry = get_object_or_404(Entry, slug=slug, user=request.user)
+    slug = slug
+
+    return render(request, 'main/viewentry.html', {'entry': entry, "slug":slug})
 
 
 
 
 
 @login_required
-def editentry(request, Entry_pk):
-    entry = get_object_or_404(Entry, pk=Entry_pk, user=request.user)
+def editentry(request, slug):
+    entry = get_object_or_404(Entry, slug=slug, user=request.user)
+    slug = slug
     if request.method =="GET":
         form = EntryForm(instance=entry)
-        return render(request, 'main/editentry.html', {'entry' : entry, 'form' : form})
+        return render(request, 'main/editentry.html', {'entry' : entry, 'form' : form, "slug":slug})
     else:
         try:
             form = EntryForm(request.POST, instance=entry)
@@ -96,8 +101,8 @@ def editentry(request, Entry_pk):
 
 
 @login_required
-def deleteentry(request, Entry_pk):
-    entry = get_object_or_404(Entry, pk=Entry_pk, user=request.user)
+def deleteentry(request, slug):
+    entry = get_object_or_404(Entry, slug=slug, user=request.user)
     if request.method == "POST":
         entry.delete()
         return redirect('mainlogin')

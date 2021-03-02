@@ -29,12 +29,14 @@ urlpatterns = [
     path('logoutuser/', views.logoutuser, name='logoutuser'),
 
 
-
+    #Main Login Page
     path('mainlogin/', views.mainlogin, name='mainlogin'),
 
+
+
     path('makeentry/', views.makeentry, name='makeentry'),
-    path('main/<int:Entry_pk>', views.viewentry, name='viewentry'),
-    path('main/<int:Entry_pk>/edit', views.editentry, name='editentry'),
-    path('main/<int:Entry_pk>/delete', views.deleteentry, name='deleteentry'),
+    path('<slug:slug>', views.viewentry, name='viewentry'),
+    path('<slug:slug>/edit', views.editentry, name='editentry'),
+    path('<slug:slug>/delete', views.deleteentry, name='deleteentry'),
 
 ]

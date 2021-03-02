@@ -20,6 +20,12 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 
     <ul class="navbar-nav ml-auto">
       {% if user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'mainlogin' %}">Main Page</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'makeentry' %}">Make Entry</a>
+              </li>
 
               <li class="nav-item">
                   <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>

@@ -23,7 +23,7 @@
 </form>
 
 
-<form style='display: none;' method="POST" action="{% url 'deleteentry' entry.id %}">
+<form style='display: none;' method="POST" action="{% url 'deleteentry' slug %}">
     {% csrf_token %}
     <button id="delete" type="submit">Delete</button>
 </form>

@@ -1,11 +1,70 @@
-body {
-   background-color: none,
-}
-
 html {
   min-height: 100%;
-   background-image: url("Backgrounds/banff.jpg");
+
    background-size: cover;
    background-repeat: no-repeat;
    background-position: center center;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
+
+}
+
+
+.maincontainer {
+  /* The image used */
+  background-image: url("day1 wallpaper.jpg");
+
+  /* Full height */
+  height: 600px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+.makenetry {
+  color: #340C1F;
+}
+
+
+.navbar {
+  height: 70px;
+  width:100%;
+
+
+}
+
+
+.navbar-decor {
+  display: flex;
+  align-content: center;
+  text-decoration: none;
+  list-style: none;
+  margin: auto;
+  width: 100%;
+  align-items: center;
+
+
+}
+
+
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  align-self: center;
+}
+
+.navbar-menu {
+  display: flex;
+
+  justify-content: space-between;
 }

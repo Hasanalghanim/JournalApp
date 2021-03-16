@@ -1,72 +1,158 @@
 
 <!doctype html>
+{% load static %}
 <html>
 <head>
-<title>DOT</title>
-{% load static %}
+  <title>DOT</title>
 
-<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{% static 'main/materialize/css/materialize.min.css' %}"  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+
+
+
 </head>
+
+
 <body>
+  {% if user.is_authenticated %}
+    <nav>
+        <div class="nav-wrapper container">
+          <a href="{% url 'home' %}" class="brand-logo">Day1</a>
+          <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 
-  <nav class="navbar navbar-expand-md bg-transparent">
-    <div class="container">
 
-        <a class="navbar-brand text-dark" href="{% url 'home' %}">
-            <span>DOT</span>
-        </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                  <li><a href="{% url 'mainlogin' %}">Main Page</a></li>
+                  <li><a href="{% url 'makeentry' %}">Make Entry</a></li>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-
-          <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
-                  <li class="nav-item">
-                      <a class="nav-link text-dark" href="{% url 'mainlogin' %}">Main Page</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link text-dark" href="{% url 'makeentry' %}">Make Entry</a>
-                  </li>
-
-                  <li class="nav-item">
-                      <a href="#" onclick="$('#signOutBtn').click()" class="nav-link text-dark">Logout</a>
-                        <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
+                  <li>
+                    <a href="#" onClick="document.getElementById('logoutform').submit()">Logout</a>
+                        <form id="logoutform" method="POST" action="{% url 'logoutuser' %}">
                           {% csrf_token %}
-                          <button id="signOutBtn" type="submit" class="text-dark">Logout</button>
+                          <input type="hidden">
                         </form>
                   </li>
+                </ul>
+                </div>
+              </nav>
+
+              <ul class="sidenav" id="mobile">
+                <li><a href="{% url 'mainlogin' %}">Main Page</a></li>
+                <li><a href="{% url 'makeentry' %}">Make Entry</a></li>
+
+                <li>
+                  <a href="#" onClick="document.getElementById('logoutform').submit()">Logout</a>
+                      <form id="logoutform" method="POST" action="{% url 'logoutuser' %}">
+                        {% csrf_token %}
+                        <input type="hidden">
+                      </form>
+                </li>
+              </ul>
+
+
+
+
+
+
+
               {% else %}
-                  <li class="nav-item">
-                      <a class="nav-link text-dark" href="{% url 'signupuser' %}">Sign Up</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link text-dark " href="{% url 'loginuser' %}">Login</a>
-                  </li>
-              {% endif %}
-            </ul>
+              <nav>
+                  <div class="nav-wrapper container">
+                    <a href="{% url 'home' %}" class="brand-logo">Day1</a>
+                </div>
+              </nav>
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+  <div class="container">
+  {% block content %}
+
+  {% endblock %}
+  </div>
+
+
+
+
+
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
         </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-</nav>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2014 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
 
 
-<div class="container">
-{% block content %}{% endblock %}
-</div>
 
 
 
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+
+</script>
+<script type="text/javascript" src="{% static 'main/materialize/js/materialize.min.js' %}"></script>
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

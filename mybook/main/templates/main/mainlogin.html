@@ -1,6 +1,8 @@
 {% extends "main/base.html" %} {% block content %} {% load static %}
 
 
+{% if user.is_authenticated %}
+
 <div class="row">
   <div class="center-align">
     <div class=" col s12">
@@ -13,18 +15,19 @@
 
 </div>
 
-<div class="col s12 center-align">
+<div class="col s12 left-align">
   <div class="">
   {% for Entry in entries %}
-    <div class=""></div>
-    <div class="z-depth-2">
+    <div class="z-depth-1 hoverable ">
 
 
-      <div class="">
-      <h4 class="">{{ Entry.Title }}</h4>
-      <div class="">
-        <h5 class="">{{ Entry.Journal| safe | truncatewords:50 }}</h5>
-        <a href="{% url 'viewentry' Entry.slug %}">Read {{ Entry.Title }}</a>
+      <div class="card-padding">
+      <h4 class="">{{ Entry.Title | truncatewords:10}}</h4>
+        <h5 class="">{{ Entry.Journal| safe | truncatewords:25 }}</h5>
+        <div class="right-align">
+          <a class="" href="{% url 'viewentry' Entry.slug %}">Read {{ Entry.Title | truncatewords:5 }}</a>
+        </div>
+
       </div>
     </div>
     </div>
@@ -36,7 +39,7 @@
 
 
 
-{% if user.is_authenticated %}
+
 
 
 

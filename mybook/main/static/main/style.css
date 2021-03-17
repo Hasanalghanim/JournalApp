@@ -13,58 +13,29 @@ html {
 
 }
 
-
-.maincontainer {
-  /* The image used */
-  background-image: url("day1 wallpaper.jpg");
-
-  /* Full height */
-  height: 600px;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-
-
-.makenetry {
-  color: #340C1F;
-}
-
-
-.navbar {
-  height: 70px;
-  width:100%;
-
-
-}
-
-
-.navbar-decor {
+body {
   display: flex;
-  align-content: center;
-  text-decoration: none;
-  list-style: none;
-  margin: auto;
-  width: 100%;
-  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-
+main {
+  flex: 1 0 auto;
 }
 
 
+.card-padding {
+  padding: 1%;
+  margin: 1%;
 
-.nav-link {
-  color: white;
-  text-decoration: none;
-  align-self: center;
+}
+.card-padding h4{ font-weight:600;
+  font-size: 1.7rem;
+  text-transform: capitalize;
 }
 
-.navbar-menu {
-  display: flex;
 
-  justify-content: space-between;
+.card-padding h5{ font-weight: 300;
+  font-size: 1.2rem;
+
 }

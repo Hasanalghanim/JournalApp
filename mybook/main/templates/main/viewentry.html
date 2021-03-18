@@ -6,19 +6,28 @@
 
 
 
-<div class="">
+<div class="view-entry-container">
   <h4> {{ entry.Title }} </h4>
+  <div class="divider">
+
+  </div>
 
   <h5> {{ entry.Journal | safe }}</h5>
 
 
+  <div class="go-back-btn">
+  <form action="{% url 'editentry' slug %}">
+      <button class="waves-effect waves-dark btn" type="submit">Edit</button>
+  </form>
 
+    <form  action="{% url 'mainlogin' %}">
+        <button class="waves-effect waves-dark btn " type="submit">Go back</button>
+    </form>
+  </div>
 
 </div>
 
-<form  action="{% url 'editentry' slug %}">
-    <button class="btn btn-success" type="submit">Edit</button>
-</form>
+
 
 
 

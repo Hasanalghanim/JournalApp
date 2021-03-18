@@ -24,6 +24,70 @@ main {
 }
 
 
+
+
+/* LogIn Page  */
+
+.login-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.login-container label{
+  color: black;
+  font-weight: bolder;
+}
+
+.login-container button{
+  width: 100%;
+  background-color: red;
+  border-radius: 20px;
+  margin-bottom: 1.5%
+
+}
+
+.signup-btn {
+  margin-top: 5%
+}
+
+
+/*  Sign Up Page */
+
+
+
+.signup-container{
+  width: 90%;
+  margin: auto;
+  margin-top: 10%;
+
+}
+
+.signup-container label{
+  color: black;
+  font-weight: bolder;
+}
+
+.signup-container small{
+  font-weight: lighter;
+  color: grey;
+}
+
+.signup-container button{
+  width: 100%;
+  background-color: red;
+  border-radius: 20px;
+  margin-bottom: 1.5%;
+  height: 40%
+
+}
+
+.signup-btn {
+  margin-top: 5%
+}
+
+/*  mainpage */
+
 .card-padding {
   padding: 1%;
   margin: 1%;
@@ -37,5 +101,37 @@ main {
 
 .card-padding h5{ font-weight: 300;
   font-size: 1.2rem;
+}
+
+
+/*  Entry Details */
+
+
+
+.view-entry-container h4{
+
+  text-transform: capitalize;
+  font-weight: bolder;
+  margin: 10% 0 10% 0;
+}
+
+.view-entry-container h5{
+  font-weight: lighter;
+  margin: 10% 0 10% 0;
+}
+
+
+.view-entry-container button{
+  margin: 10% 0 5% 0;
+  width: 100%;
+  background-color: red;
+  border-radius: 20px;
+
+}
+
+
+.go-back-btn {
+margin: 5%;
+
 
 }

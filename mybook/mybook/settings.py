@@ -29,8 +29,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = ['9dd04e7efaa2.ngrok.io', "127.0.0.1", ]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['9dd04e7efaa2.ngrok.io', "127.0.0.1", ]
 
 
 # Application definition

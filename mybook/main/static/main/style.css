@@ -90,7 +90,7 @@ main {
 
 .card-padding {
   padding: 1%;
-  margin: 1%;
+  margin: 0%;
 
 }
 .card-padding h4{ font-weight:600;
@@ -112,17 +112,17 @@ main {
 
   text-transform: capitalize;
   font-weight: bolder;
-  margin: 10% 0 10% 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .view-entry-container h5{
   font-weight: lighter;
-  margin: 10% 0 10% 0;
+  margin: 2rem 0 2rem 0;
 }
 
 
 .view-entry-container button{
-  margin: 10% 0 5% 0;
+  margin: 2rem 0 1rem 0;
   width: 100%;
   background-color: red;
   border-radius: 20px;
@@ -131,7 +131,28 @@ main {
 
 
 .go-back-btn {
-margin: 5%;
+margin: 2rem ;
 
+}
+
+.card-radi{
+  border-radius: 10px;
+}
+
+/* new Entry page  */
+
+.entry-form-card{
+  margin-top: 3rem;
+
+}
+
+.entry-form-card form{
+  margin-top: 3rem;
+}
+
+.entry-form-card button{
+  width: 100%;
+  background-color: red;
+  border-radius: 20px;
 
 }

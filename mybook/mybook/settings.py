@@ -27,11 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["fced85da3548.ngrok.io", "127.0.0.1"]
+ALLOWED_HOSTS = ['9dd04e7efaa2.ngrok.io', "127.0.0.1", ]
 
 
 # Application definition

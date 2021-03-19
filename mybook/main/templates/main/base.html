@@ -79,7 +79,7 @@
 
 
 
-  <main class="container">
+  <main class="">
   {% block content %}
 
   {% endblock %}
@@ -122,6 +122,8 @@
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
   });
+
+  
 
 </script>
 <script type="text/javascript" src="{% static 'main/materialize/js/materialize.min.js' %}"></script>

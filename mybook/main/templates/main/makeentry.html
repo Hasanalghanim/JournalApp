@@ -1,20 +1,34 @@
 {% extends "main/base.html" %} {% block content %}
 {% load static %}
 
-{% load crispy_forms_tags %}
 
 
 
+<div class="entry-form-card">
 
-<form method="POST" >
-  <div class="col s12 m6 l3">
+  <div class="container">
+  <h5 class="center-align">Make a new journal entry</h5>
+  <form method="POST">
     {% csrf_token %}
-    {{form.Title }}
-    {{form.Journal }}
-  </div>
-  <button type="submit" class="btn btn-primary">Save</button>
 
-</form>
+
+      <div class="input-field">
+        <label>Title</label>
+        {{form.Title }}
+      </div>
+      <div style="margin-top:3rem"class="input-field">
+        <label>Journal Entry</label>
+        {{ form.Journal }}
+      </div>
+
+    <button style="margin-top:3rem" type="submit" class="waves-effect waves-dark btn">Save</button>
+    </form>
+    </div>
+
+
+
+</div>
+
 
 
 

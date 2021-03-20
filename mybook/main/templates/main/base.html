@@ -22,7 +22,7 @@
   {% if user.is_authenticated %}
     <nav>
         <div class="nav-wrapper container">
-          <a href="{% url 'home' %}" class="brand-logo">Day1</a>
+          <a href="{% url 'mainlogin' %}" class="brand-logo">Day1</a>
           <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 
@@ -123,7 +123,7 @@
     var instances = M.Sidenav.init(elems);
   });
 
-  
+
 
 </script>
 <script type="text/javascript" src="{% static 'main/materialize/js/materialize.min.js' %}"></script>

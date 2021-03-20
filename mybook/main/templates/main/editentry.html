@@ -26,11 +26,13 @@
 
     <button style="margin-top:3rem; background-color:green" type="submit" class="waves-effect waves-dark btn">Update</button>
     <!-- <button style="margin-top:3rem" type="button" class="waves-effect waves-dark btn" onclick="getElementById('delete')">Delete</button> -->
-    <form  method="POST" action="{% url 'deleteentry' slug %}">
-        {% csrf_token %}
-        <button style="margin-top:3rem" class="waves-effect waves-dark btn" id="delete" type="submit">Delete</button>
-    </form>
 
+
+  </form>
+
+  <form  method="POST" action="{% url 'deleteentry' slug %}">
+      {% csrf_token %}
+      <button style="margin-top:3rem" class="waves-effect waves-dark btn" id="delete" type="submit">Delete</button>
   </form>
 
 

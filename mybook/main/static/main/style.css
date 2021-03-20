@@ -96,6 +96,7 @@ main {
 .card-padding h4{ font-weight:600;
   font-size: 1.7rem;
   text-transform: capitalize;
+
 }
 
 
@@ -155,4 +156,9 @@ margin: 2rem ;
   background-color: red;
   border-radius: 20px;
 
+}
+
+.overflow-stopper{
+  overflow-wrap: break-word;
+  hyphens:auto;
 }

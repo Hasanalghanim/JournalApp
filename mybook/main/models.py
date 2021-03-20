@@ -10,7 +10,7 @@ class Entry(models.Model):
     Journal = models.TextField()
     Date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = models.SlugField(null=False, unique=True)
+    slug = models.SlugField(null=False, unique=True, max_length=30)
 
     def save(self, *args, **kwargs):
         if Entry.objects.filter(Title=self.Title).exists():
